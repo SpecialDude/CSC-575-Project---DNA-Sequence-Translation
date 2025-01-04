@@ -1,0 +1,227 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+  .container {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    border-radius: 10px;
+    transition: margin-right 1s ease;
+    transition: align-self 1s ease;
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  .input-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  input {
+    padding: 10px;
+    font-size: 16px;
+    width: 75%;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #2980b9;
+  }
+  .results {
+    margin-top: 30px;
+    font-size: 18px;
+  }
+  .transcription, .translation {
+    padding: 10px;
+    background-color: #e8f4fc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .highlight {
+    color: #d35400;
+    font-weight: bold;
+  }
+  .nucleotide, .codon {
+    display: inline-block;
+    font-size: 22px;
+    margin: 5px;
+    width: 30px;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #3498db;
+    color: white;
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 1s forwards;
+  }
+
+  .nucleotide-container {
+    flex: 1;
+    flex-basis: 100%;
+    margin-bottom: 0px;
+    position: relative; /* For arrow positioning */
+  }
+
+  .arrow {
+    display: inline-block;
+    margin: 5px;
+    font-size: 22px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-align: center;
+    width: 30px;
+    align-items: center;
+    color: #e74c3c;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+
+  .messages-container {
+    flex: 1;
+    flex-basis: 100%;
+  }
+
+  .translate-btn {
+    animation: translateButton 1s forwards;
+    opacity: 0;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes morph {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  /* .mrna-nucleotide {
+    background-color: #e74c3c;
+    animation: morph 1s forwards;
+  }  */
+
+  .mrna-nucleotide {
+    background-color: #e74c3c;
+    animation: translateFromBottom 1s forwards;  /* Apply the translation animation */
+  }
+
+  .mrna-nucleotide-highlight {
+    background-color: #3498db;
+  }
+
+  .mrna-nucleotide-start-codon {
+    background-color: #6934db;
+  }
+
+  .mrna-nucleotide-read {
+    background-color: #db3485;
+  }
+
+  /* Translation animation for mRNA nucleotides */
+  @keyframes translateFromBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px); /* Starts 50px below */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);  /* Ends at its final position */
+    }
+  }
+
+  @keyframes translateButton {
+    0% {
+      opacity: 0;
+      transform: translateY(50px); /* Starts 50px below */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);  /* Ends at its final position */
+    }
+  }
+
+  .codon.active {
+    background-color: #f39c12;
+  }
+  .protein {
+    background-color: #2ecc71;
+    color: white;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  #status-container {
+    position: fixed;
+    top: 50px;
+    left: 0px;
+    width: 350px;
+    min-height: 200px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    z-index: 1000;
+    display: none;
+  }
+
+  #status-header {
+    font-weight: bold;
+    font-size: 16px;
+    color: #4CAF50; /* Green color for the title */
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  #status-content {
+    max-height: 150px;
+    overflow-y: auto;
+    padding-right: 5px;
+    word-wrap: break-word; /* To handle long text without overflowing */
+  }
+
+  /* Optional: Custom scrollbar styling */
+  #status-container::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  #status-container::-webkit-scrollbar-thumb {
+    background-color: #cccccc;
+    border-radius: 10px;
+  }
+
+  #status-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+  

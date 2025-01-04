@@ -1,0 +1,41 @@
+<!-- 
+ Name: Adeoti Warith Adetayo
+ Matric No: 214851
+ Date: September 30, 2024
+ 
+ Bioinformatics Assignment (DNA Transcription and Translation)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DNA Transcription & Translation Visualizer</title>
+  <link href="assets/main.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>DNA Transcription & Translation</h1>
+    <div class="input-group">
+      <input id="dnaInput" type="text" placeholder="Enter DNA Sequence (A, T, C, G)">
+      <button onclick="visualize()">Transcribe</button>
+      <button onclick="visualizeTranslation()" style="background: green;">Translate</button>
+    </div>
+    <div class="results">
+      <div class="transcription" id="transcriptionResult"></div>
+      <div class="translation" id="translationResult"></div>
+    </div>
+  </div>
+
+
+  <div id="status-container">
+    <div id="status-header">Translation Status</div>
+    <div id="status-message-content">
+    </div>
+    <div id="protein-strand" style="margin: 30px 20px;"></div>
+  </div>
+
+  <script src="assets/index.js"></script>
+</body>
+</html>
